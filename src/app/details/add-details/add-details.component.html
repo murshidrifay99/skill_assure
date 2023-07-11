@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection</title>
+</head>
+<body>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" (click)="toggleDropdown()">
+          {{selectedItems.length > 0 ? selectedItems.map(item => item.name).join(', ') : 'Select Items'}}
+        </button>
+        <div class="dropdown-menu" [class.show]="isDropdownOpen">
+          <button class="dropdown-item" type="button" (click)="selectAll()">Select All</button>
+          <div class="dropdown-divider"></div>
+          <button *ngFor="let item of items" class="dropdown-item" type="button" (click)="toggleSelection(item)">
+            <i [class.fa-check]="isSelected(item)"></i>
+            {{item.name}}
+          </button>
+        </div>
+      </div>
+      
+</body>
+</html>
